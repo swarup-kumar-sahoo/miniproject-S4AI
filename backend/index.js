@@ -18,7 +18,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __dirname = path.dirname(__filename);
 
 app.use(cors({
     origin: process.env.CLIENT_URL,
@@ -162,11 +162,29 @@ app.use((err, req, res, next) => {
     });
   });
 
-app.use(express.static(path.join(__dirname, "../client/dist")))
 
-app.get("*", (req,res)=>{
-    res.sendFile(path.join(__dirname, "../client/dist", "index.html"))
-})
+if(process.env.NODE_ENV === 'production'){
+    
+    const buildPath = path.join(__dirname, '../client/dist');
+    console.log("Serving static files from:", buildPath);
+
+    app.use(express.static(buildPath));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(buildPath, 'index.html'), (err) => {
+            if (err) {
+                console.error("Failed to send index.html:", err);
+                res.status(500).send("Failed to load the page");
+            }
+        });
+    });
+
+}else{
+    app.get("/", (req,res)=>{
+        res.send("API IS RUNNING SUCCESSFULLY")
+    })
+}
+
 
 app.listen(port, ()=>{
     connect()
