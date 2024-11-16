@@ -1,24 +1,25 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./rootLayout.css";
-import { ClerkProvider, SignedIn, UserButton } from "@clerk/clerk-react";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useEffect } from 'react';
 
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
-
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-
-if (!PUBLISHABLE_KEY) {
-  throw new Error("Missing Publishable Key");
-}
-
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 const RootLayout = () => {
+  const navigate = useNavigate();
+  
+  // Check if user is authenticated (use localStorage to manage authentication status)
+  const userId = localStorage.getItem("userId");
+
+  useEffect(() => {
+    // Redirect to sign-in if no userId in localStorage
+    if (!userId) {
+      navigate("/sign-in");
+    }
+  }, [userId, navigate]);
+
   return (
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
       <div className="rootLayout">
         <header>
           <Link to="/" className="logo">
@@ -26,17 +27,24 @@ const RootLayout = () => {
             <span>LAMA AI</span>
           </Link>
           <div className="user">
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
+            {userId && (
+              <div className="user-info">
+                <span>Welcome, User</span>
+                <button onClick={() => {
+                  localStorage.removeItem("userId");
+                  navigate("/sign-in");
+                }}>
+                  Sign Out
+                </button>
+              </div>
+            )}
           </div>
         </header>
         <main>
           <Outlet />
         </main>
       </div>
-      </QueryClientProvider>
-    </ClerkProvider>
+    </QueryClientProvider>
   );
 };
 
