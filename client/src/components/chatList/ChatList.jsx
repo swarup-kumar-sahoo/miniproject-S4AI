@@ -3,16 +3,30 @@ import './chatList.css';
 import { useQuery } from '@tanstack/react-query';
 
 const ChatList = () => {
-  const userId = localStorage.getItem("userId"); // Retrieve userId from localStorage
+  const userId = localStorage.getItem("userId");
   const { isPending, error, data } = useQuery({
     queryKey: ['userChats'],
-    queryFn: () =>
-      fetch(`${VITE_API_URL}/api/userchats?userId=${userId}`, {
+    queryFn: async () => {
+      if (!userId) {
+        throw new Error("User ID is required");
+      }
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/userchats/${userId}`, {
         headers: {
-          "Authorization": `Bearer ${userId}`, // Example of sending userId in request header for custom auth
+          "Authorization": `Bearer ${userId}`,
+          "Content-Type": "application/json"
         },
-      }).then((res) => res.json()),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch chats');
+      }
+      return response.json();
+    },
+    enabled: !!userId,
   });
+
+  if (!userId) {
+    return <div>Please log in to view your chats.</div>;
+  }
 
   return (
     <div className='chatList'>
@@ -23,15 +37,27 @@ const ChatList = () => {
       <hr />
       <span className='title'>RECENT CHATS</span>
       <div className="list">
-        {isPending ? "Loading..." : error ? "Something went wrong" : data?.map(chat => (
-          <Link to={`/dashboard/chats/${chat._id}`} key={chat._id}>
-            {chat.title}
-          </Link>
-        ))}
+        {isPending ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div className="error-message">Error: {error.message}</div>
+        ) : data && data.length > 0 ? (
+          data.map(chat => (
+            <Link 
+              to={`/dashboard/chats/${chat._id}`} 
+              key={chat._id}
+              className="chat-link"
+            >
+              {chat.title}
+            </Link>
+          ))
+        ) : (
+          <div className="no-chats">No recent chats</div>
+        )}
       </div>
       <hr />
       <div className="upgrade">
-        <img src="/logo.png" alt="" />
+        <img src="/logo.png" alt="LAMA AI Logo" />
         <div className="texts">
           <span>Upgrade to LAMA AI Pro</span>
           <span>Get Unlimited access to all features</span>

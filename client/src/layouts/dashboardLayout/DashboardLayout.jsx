@@ -5,13 +5,11 @@ import Chatlist from "../../components/chatList/ChatList";
 
 const DashboardLayout = () => {
   const navigate = useNavigate();
-
-  // Check if user is authenticated
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     if (!userId) {
-      navigate("/sign-in");  // Redirect to sign-in if no userId in localStorage
+      navigate("/sign-in");  
     }
   }, [userId, navigate]);
 
