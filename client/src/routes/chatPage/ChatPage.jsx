@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { IKImage } from "imagekitio-react";
 import Markdown from "react-markdown";
 import NewPrompt from '../../components/newPrompt/NewPrompt';
-import styles from "./ChatPage.module.css";
+import styles from "./chatPage.module.css";
 import { useParams, useNavigate } from 'react-router-dom';
 
 const ChatPage = () => {
