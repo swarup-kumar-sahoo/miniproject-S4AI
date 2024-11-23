@@ -30,7 +30,7 @@ A modern chat application built using the MERN stack (MongoDB, Express, React, N
 ![DashBoard](https://i.imgur.com/nl28tiT.png)
 
 ![DashBoard](https://i.imgur.com/XqRFAlf.png)
-## Demo
+## Live Project
 
-🚀 **Live Demo**: [Click here to visit the live project](https://ai-chat-frontend-hm0u.onrender.com)
+🚀 **Live**: [Click here to visit the live project](https://ai-chat-frontend-hm0u.onrender.com)
 
