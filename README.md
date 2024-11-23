@@ -1,5 +1,5 @@
 
-# AI CHAT
+# LAMA AI CHAT
 A modern chat application built using the MERN stack (MongoDB, Express, React, Node.js) and powered by the Gemini API for enhanced communication capabilities.
 
 
