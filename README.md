@@ -1,8 +1,8 @@
-![JavaScript](https://img.shields.io/badge/language-JavaScript-F7DF1E)
-![React](https://img.shields.io/badge/framework-React-61DAFB)
+![JavaScript](https://img.shields.io/badge/Language-JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![React](https://img.shields.io/badge/Framework-React-61DAFB?logo=react)
 ![Express](https://img.shields.io/badge/Framework-Express-000000?logo=express&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Runtime-Node.js-8CC84B?logo=node.js&logoColor=white)
-![MongoDB](https://img.shields.io/badge/Database-MongoDB-009688)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-009688?logo=mongodb&logoColor=white)
 
 # LAMA AI CHAT
 A modern chat application built using the MERN stack (MongoDB, Express, React, Node.js) and powered by the Gemini API for enhanced communication capabilities.
