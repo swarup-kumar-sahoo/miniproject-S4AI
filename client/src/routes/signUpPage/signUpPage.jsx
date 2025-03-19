@@ -18,13 +18,19 @@ const SignUpPage = () => {
         },
         body: JSON.stringify({ username, password }),
       });
-      const data = await response.json();
+
+      // Check if the response body is empty
+      const text = await response.text();
+      const data = text ? JSON.parse(text) : {};
+
       if (response.ok) {
         navigate("/sign-in");
       } else {
+        console.error("Signup failed:", response.status, data);
         setError(data.message || "Signup failed");
       }
     } catch (err) {
+      console.error("Error signing up:", err);
       setError("Error signing up: " + err.message);
     }
   };
@@ -34,8 +40,8 @@ const SignUpPage = () => {
       <div className="auth-container">
         <div className="auth-card">
           <div className="logo-container">
-            <img src="/logo.png" alt="LAMA AI Logo" className="auth-logo" />
-            <h1>LAMA AI</h1>
+            <img src="/logo.png" alt="S4 AI Logo" className="auth-logo" />
+            <h1>S4 AI</h1>
           </div>
           <h2>Create an Account</h2>
           <p className="subtitle">Join us and start your AI journey</p>

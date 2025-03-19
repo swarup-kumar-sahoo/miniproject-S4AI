@@ -10,6 +10,8 @@ import RootLayout from "./layouts/rootLayout/RootLayout";
 import DashboardLayout from "./layouts/dashboardLayout/DashboardLayout";
 import SignInPage from "./routes/signInPage/signInPage";
 import SignUpPage from "./routes/signUpPage/signUpPage";
+import AboutUs from "./routes/aboutUs/AboutUs"; // Import the AboutUs component
+import ImageMaker from "./imagemaker/ImageMaker"; // Import the ImageMaker component
 
 const queryClient = new QueryClient();
 
@@ -20,6 +22,8 @@ const router = createBrowserRouter([
       { path: "/", element: <Homepage /> },
       { path: "/sign-in", element: <SignInPage /> },
       { path: "/sign-up", element: <SignUpPage /> },
+      { path: "/about-us", element: <AboutUs /> }, // Add the About Us route
+      { path: "/image-maker", element: <ImageMaker /> }, // Add the ImageMaker route
       {
         element: <DashboardLayout />,
         children: [

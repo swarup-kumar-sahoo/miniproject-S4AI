@@ -35,8 +35,8 @@ const SignInPage = () => {
       <div className="auth-container">
         <div className="auth-card">
           <div className="logo-container">
-            <img src="/logo.png" alt="LAMA AI Logo" className="auth-logo" />
-            <h1>LAMA AI</h1>
+            <img src="/logo.png" alt="S4 AI Logo" className="auth-logo" />
+            <h1>S4 AI</h1>
           </div>
           <h2>Welcome Back!</h2>
           <p className="subtitle">Please sign in to your account</p>
@@ -71,7 +71,7 @@ const SignInPage = () => {
           </form>
           
           <div className="auth-footer">
-            <p>Don't have an account?</p>
+            <p> Do not have an account?</p>
             <Link to="/sign-up" className="signup-link">
               Sign Up
             </Link>

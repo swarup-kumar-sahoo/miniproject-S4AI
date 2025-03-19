@@ -32,8 +32,8 @@ const ChatList = () => {
     <div className='chatList'>
       <span className='title'>DASHBOARD</span>
       <Link to="/dashboard">Create a new Chat</Link>
-      <Link to="/">Explore LAMA AI</Link>
-      <Link to="/">Contact</Link>
+      <Link to="/">Explore S4 AI</Link>
+      <Link to="/about-us">About Us</Link>
       <hr />
       <span className='title'>RECENT CHATS</span>
       <div className="list">
@@ -57,9 +57,9 @@ const ChatList = () => {
       </div>
       <hr />
       <div className="upgrade">
-        <img src="/logo.png" alt="LAMA AI Logo" />
+        <img src="/logo.png" alt="S4 AI Logo" />
         <div className="texts">
-          <span>Upgrade to LAMA AI Pro</span>
+          <span>Upgrade to S4 AI Pro</span>
           <span>Get Unlimited access to all features</span>
         </div>
       </div>

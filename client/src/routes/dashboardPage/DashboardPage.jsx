@@ -47,8 +47,8 @@ const DashboardPage = () => {
     <div className={styles.dashboardPage}>
       <div className={styles.texts}>
         <div className={styles.logo}>
-          <img src="/logo.png" alt="LAMA AI Logo" />
-          <h1>LAMA AI</h1>
+          <img src="/logo.png" alt="S4 AI Logo" />
+          <h1>S4 AI</h1>
         </div>
         <div className={styles.options}>
           <div className={styles.option}>

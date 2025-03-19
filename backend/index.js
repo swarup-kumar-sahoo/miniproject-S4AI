@@ -202,7 +202,6 @@ app.get("/api/chats/:id/exists", async (req, res) => {
   }
 });
 
-
 // Start the server
 app.listen(port, () => {
   connect();

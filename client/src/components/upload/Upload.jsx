@@ -1,11 +1,12 @@
-import { IKContext, IKImage, IKUpload } from 'imagekitio-react';
+import { IKContext, IKUpload } from 'imagekitio-react';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
-const urlEndpoint = "https://ik.imagekit.io/duyut14iw";
-const publicKey = "public_80xSfQQwa6ZGlfrLjRVlrBk8HiI=";
+const urlEndpoint = "https://ik.imagekit.io/nyj0rrpl1";
+const publicKey = "public_EyR0fyryzue1HjHmiU+tzpxRUr4=";
 const authenticator = async () => {
   try {
-    const response = await fetch(`${VITE_API_URL}/api/upload`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
       headers: {
         "Authorization": `Bearer ${localStorage.getItem("userId")}`, // Adding Authorization header
       }
@@ -71,11 +72,9 @@ const Upload = ({ setImg }) => {
         style={{ display: "none" }}
         ref={ikUploadRef}
       />
-      {
-        <label onClick={() => ikUploadRef.current.click()}>
-          <img src="/attachment.png" alt="" />
-        </label>
-      }
+      <Link to="/image-maker">
+        <img src="/logo.png" alt="AI Image Maker" style={{ width: '24px', height: '24px' }} />
+      </Link>
     </IKContext>
   );
 };
